@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="localStorageApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-controller="LocalStorageController">
+
+<form ng-submit="submit()">
+First name:<br>
+    <input type="text" name="fname"  ng-model="fname" ng-required="required">
+    <br>
+    Last name:<br>
+    <input type="text" name="lname"  ng-model="lname" ng-required="required">
+    <br><br>
+
+    Age:<br>
+    <input type="text" name="age" ng-model="age" ng-required="required">
+    <br><br>
+    <input type="submit" value="Submit" ng-disabled="(!fname && !lname  && !age)" >
+</form>
+
+  <button ng-click="getFname()">Get First name</button>
+
+  <button ng-click="getLname()">Get Secod name</button>
+
+  <button ng-click="getKeys()">Get keys</button>
+
+  <button ng-click="getStorageType()">Get Storage Type</button>
+
+   <button ng-click="removeFname()">Remove Fname</button>
+
+   <button ng-click="removeAll()">Remove fname,lanme</button>
+
+   <button ng-click="clearStorage()">Clear All</button>
+
+  <button ng-click="clearKeyByNumber()">Clear Key By Number</button>
+
+</body>
+</html>
