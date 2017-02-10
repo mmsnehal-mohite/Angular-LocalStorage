@@ -28,7 +28,7 @@
      }
 
 
-    function localStorageController($scope,localStorageService){
+    function localStorageController($scope,localStorageService, $timeout){
 
     //Checks if the browser support the current storage type(e.g: localStorage, sessionStorage). Returns: Boolean
      var  isStorageSupported = localStorageService.isSupported;
@@ -112,7 +112,7 @@
 
 
       console.log("Removed"+localStorageService.remove('fname','lname'));
-    }
+    };
 
     $scope.clearStorage= function(){
       /*
@@ -124,7 +124,38 @@
        Returns: Boolean
        */
       console.log("Removed"+localStorageService.clearAll());
-    }
+    };
+
+      $scope.getCountOfKeys = function(){
+        /*
+         Return localStorageService.length, ignore keys that not owned. Returns Number
+         */
+        console.log('Count:'+ localStorageService.length());
+      };
+
+      $scope.getDerivedKey = function(){
+        /*
+         Return the derive key Returns String
+         */
+        console.log('Count:'+ localStorageService.deriveKey('fname'));
+      };
+
+
+      localStorageService.set('property', 'oldValue');
+
+      $scope.lsValue="asdsad";
+      localStorageService.set('property', 'oldadsasdValue');
+      $scope.unbind = localStorageService.bind($scope, 'property');
+
+      //Test Changes
+      $scope.update = function(val) {
+        $scope.property = val;
+        $timeout(function() {
+          alert("localStorage value: " + localStorageService.get('property'));
+        });
+      }
+
+
 
 
 
