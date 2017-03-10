@@ -427,4 +427,8 @@ Set all the local storage configuration of app in the config block
  last parameter for any of the API calls.
  For example: localStorageService.set(key, val, "sessionStorage");
 
+Manual Page for Angular Storage
 
+1.set
+2.get
+3.removeAll
